@@ -24,6 +24,14 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
+app.get('/api/notes', (req, res) => {
+    // read db.json file and return all saved notes as JSON
+    fs.readFile(path.join(__dirname, '/db/db.json'), 'utf8', (err, data) => {
+        if (err) throw err;
+        return res.json(data);
+    })
+});
+
 
 // Starts the server to begin listening
 // =============================================================
