@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
 // Why did this one not work like the one above?
 router.get('/notes', (req, res) => {
     // return notes.html file
-    console.log(path.resolve(__dirname, "./../public"));
     res.sendFile("/notes.html", { root: path.resolve(__dirname, "./../public") });
 });
 
@@ -38,7 +37,24 @@ router.post('/api/notes', (req, res) => {
         if (err) throw err;
     });
 
-    res.send("success!");
+    res.send('Success!');
+});
+
+// delete a note by id#
+router.delete('/api/notes/:id', (req, res) => {
+    // Check to make sure the note with the ID exists in the db array
+    // found will be true it is does exist
+    const found = db.some(note => note.id === req.params.id);
+
+    if (found) {
+        res.json({
+            msg: 'Note deleted',
+            db: db.filter(note => note.id !== req.params.id)
+        });
+    } else {
+        // if there's not note with that id,
+        res.status(400).json({ msg: `No note with the ID of ${req.params.id} exists.`});
+    }
 });
 
 module.exports = router;
