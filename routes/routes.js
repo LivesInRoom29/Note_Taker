@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const db = require('../db/db.json');
+let db = require('../db/db.json');
 
 const router = express.Router();
 
@@ -28,7 +28,7 @@ router.post('/api/notes', (req, res, next) => {
         if (err) {
             next(err); // Pass errors to Express
         } else {
-            res.send('Success!');
+            res.send('New note was saved to db file!');
         }
     });
 });
@@ -44,11 +44,10 @@ router.delete('/api/notes/:id', (req, res, next) => {
 
     if (found) {
         // Use filter to make newDB that includes all notes except for the one with the id
-        const newDB = db.filter(note => note.id !== idToDelete);
-        console.log(newDB);
+        db = db.filter(note => note.id !== idToDelete);
 
         // Write the newDB data to the db.json file to update the array of notes
-        fs.writeFile('./db/db.json', JSON.stringify(newDB), {encoding: 'utf8'}, (err) => {
+        fs.writeFile('./db/db.json', JSON.stringify(db), {encoding: 'utf8'}, (err) => {
             if (err) {
                 next(err) // Pass errors to Express.
             } else {
