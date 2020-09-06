@@ -6,18 +6,7 @@ const db = require('../db/db.json');
 
 const router = express.Router();
 
-// ___________Routes ___________
-// ---------- HTML routes ----------
-router.get('/', (req, res) => {
-    // return index.html file
-    res.sendFile(path.join(__dirname, '../public/INDEX.html'));
-});
-
-router.get('/notes', (req, res) => {
-    // return notes.html file
-    res.sendFile(path.join(__dirname, '../public/notes.html'));
-});
-
+// ___________Routes __________
 // ---------- API routes ----------
 // To load the notes from the db file
 router.get('/api/notes', (req, res) => {
@@ -65,6 +54,18 @@ router.delete('/api/notes/:id', (req, res) => {
         // if there's not note with that id, return error status
         res.status(400).json({ msg: `No note with the ID of ${req.params.id} exists.`});
     }
+});
+
+// ---------- HTML routes ----------
+router.get('/notes', (req, res) => {
+    // return notes.html file
+    res.sendFile(path.join(__dirname, '../public/notes.html'));
+});
+
+// For all other urls, return the index page
+router.get('*', (req, res) => {
+    // return index.html file
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 module.exports = router;
