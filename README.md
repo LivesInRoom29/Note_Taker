@@ -62,3 +62,6 @@ You can find more of my work at GitHub under my username [LivesInRoom29](https:/
 
 ## Credits
 * Starter code for the frontend of this project Starter code provided by Trilogy Education ServicesStarter code provided by Trilogy Education Servicesprovided by Trilogy Education Services.
+* To generate the animated gif: https://gifcap.dev/
+* Thanks to the UNH Bootcamp instructor, TAs, and tutors for the great instruction, resources, and support.
+* Thanks to my classmates for helping troubleshoot and sharing awesome resources and questions.
