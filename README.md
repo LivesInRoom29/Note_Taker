@@ -14,7 +14,10 @@ For this project, the frontend was already created. My task was to build the bac
 * [UUID](https://www.npmjs.com/package/uuid)
 * [Postman](https://www.postman.com/)
 
-[Link to Deployed Project](http://...)
+## Demo
+![Note Taker Demo](demo/Note_Taker_Demo.gif)
+
+[Link to Deployed Project](https://murmuring-forest-56027.herokuapp.com/)
 
 
 ## Table of Contents
