@@ -22,7 +22,8 @@ router.get('/api/notes', (req, res) => {
     // read db.json file and return all saved notes as JSON
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) throw err;
-        return res.send(data);
+        console.log(typeof data) // String? won't let js perform forEach
+        return res.send(JSON.parse(data));
     });
 });
 
